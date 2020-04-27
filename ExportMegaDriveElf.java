@@ -30,6 +30,15 @@ public class ExportMegaDriveElf extends GhidraScript {
         println("Mega drive elf export.");
         File file = askFile("Select Elf file to save.", "Save");
 
+        if (file.exists()) {
+            boolean shouldOverwrite = askYesNo("File Already Exists",
+                    "The file already exists.\nDo you want to overwrite the existing file?");
+            if (!shouldOverwrite) {
+                printerr("output file already exists, user chose to keep existing.");
+                return;
+            }
+        }
+
         FileOutputStream fos = new FileOutputStream(file);
 
         //wipe ELF header we'll fill it in later.
