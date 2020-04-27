@@ -278,6 +278,7 @@ public class ExportMegaDriveElf extends GhidraScript {
 
         public void write(FileOutputStream fileOutputStream) throws IOException {
             ByteBuffer sectionTableEntry = ByteBuffer.allocate(0x28);
+            sectionTableEntry.order(ByteOrder.BIG_ENDIAN);
             sectionTableEntry.putInt(sh_name);
             sectionTableEntry.putInt(sh_type); //SHT_PROGBITS
             sectionTableEntry.putInt(sh_flags); //SF32_Write_alloc
@@ -401,6 +402,7 @@ public class ExportMegaDriveElf extends GhidraScript {
 
         private byte[] createBytes() {
             ByteBuffer byteBuffer = ByteBuffer.allocate(0x10);
+            byteBuffer.order(ByteOrder.BIG_ENDIAN);
             byte[] bytes = new byte[symbols.size() * 0x10];
             int bytesOffset = 0;
             for (ElfSymbolRecord symbol : symbols) {
