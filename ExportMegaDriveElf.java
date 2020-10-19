@@ -101,7 +101,7 @@ public class ExportMegaDriveElf extends GhidraScript {
         elfHeader.put((byte)0);
         elfHeader.put((byte)0);
         //padding
-        for(int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             elfHeader.put((byte)0);
         }
         elfHeader.put((byte)0);
@@ -225,7 +225,7 @@ public class ExportMegaDriveElf extends GhidraScript {
                 if (header.sh_addralign > 1) {
                     long padding = offset % header.sh_addralign;
                     if (padding > 0) {
-                        for ( int i = 0; i < padding; i++) {
+                        for (int i = 0; i < padding; i++) {
                             fos.write(zeroByte);
                         }
                         offset += padding;
@@ -313,7 +313,7 @@ public class ExportMegaDriveElf extends GhidraScript {
         STT_NOTYPE 	(0),
         STT_OBJECT 	(1),
         STT_FUNC 	(2),
-        STT_SECTION (3),
+        STT_SECTION	(3),
         STT_FILE 	(4),
         STT_COMMON 	(5),
         STT_TLS 	(6),
